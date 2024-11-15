@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating iFrame Example</title>
+    <style>
+        /* Styling for the floating iframe container */
+        .floating-iframe {
+            position: fixed;  /* Keeps it in place while scrolling */
+            top: 20px;        /* Distance from the top */
+            right: 20px;      /* Distance from the right */
+            width: 300px;
+            height: 400px;
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        /* Full-size iframe within the container */
+        .floating-iframe iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating iframe Container -->
+    <div class="floating-iframe">
+        <iframe src="program1.html" title="Embedded Content"></iframe>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content" style="padding: 20px;">
+        <h1>Welcome to Our Website</h1>
+        <p>Scroll down through the frame on the side to find the college website</p>
+        <p>...</p> <!-- Add more content here to demonstrate scrolling -->
+    </div>
+
+</body>
+</html>
