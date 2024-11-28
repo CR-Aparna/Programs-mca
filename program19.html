@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mouse over event</title>
+    <style>
+        body{
+            background-color: black;
+            color:white;
+        }
+        h2{
+            text-align: center;
+            font-size:50px;
+        }
+        .image-div {
+            display: flex;
+            width: auto;
+            height: auto;
+        }
+        .hover-text {
+            width: fit-content;
+            height: fit-content;
+            font-size: 25px;
+        }
+        .image-properties {
+            width: 500px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Mouse over event</h2> 
+    <p onmouseover="imageAdded ? undefined: newImageText()" class="hover-text" onmouseleave="imageAdded ? removeImageText(): undefined">
+        <i>Place the cursor on this text to see the image and description about Tiger.</i>
+    </p>
+</body>
+<script>
+    let imageAdded = false;
+    function newImageText(){
+        const div = document.createElement("div");
+        div.classList.add("image-div");
+        div.id = 'img-div';
+        const image = document.createElement("img");
+        image.classList.add("image-properties");
+        const text = document.createElement("p");
+        image.src = "https://files.worldwildlife.org/wwfcmsprod/images/Tiger_resting_Bandhavgarh_National_Park_India/hero_small/6aofsvaglm_Medium_WW226365.jpg";
+        text.innerHTML = "Tiger is the national animal of India.";
+        div.appendChild(image);
+        div.appendChild(text);
+        document.body.appendChild(div);
+        imageAdded = true;
+    }
+
+    function removeImageText(){
+        const div = document.getElementById("img-div");
+        div.remove();
+        imageAdded = false;
+    }
+</script>
+</html>
