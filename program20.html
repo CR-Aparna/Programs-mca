@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 5px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Online Exam</h1>
+        <form id="examForm">
+            <div class="question">
+                <p>1. What is the capital of France?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="q1" value="Paris"> Paris</label></li>
+                    <li><label><input type="radio" name="q1" value="Berlin"> Berlin</label></li>
+                    <li><label><input type="radio" name="q1" value="Madrid"> Madrid</label></li>
+                </ul>
+            </div>
+            <div class="question">
+                <p>2. Which planet is known as the Red Planet?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="q2" value="Mars"> Mars</label></li>
+                    <li><label><input type="radio" name="q2" value="Venus"> Venus</label></li>
+                    <li><label><input type="radio" name="q2" value="Jupiter"> Jupiter</label></li>
+                </ul>
+            </div>
+            <div class="question">
+                <p>3. What is the largest ocean on Earth?</p>
+                <ul class="options">
+                    <li><label><input type="radio" name="q3" value="Pacific"> Pacific</label></li>
+                    <li><label><input type="radio" name="q3" value="Atlantic"> Atlantic</label></li>
+                    <li><label><input type="radio" name="q3" value="Indian"> Indian</label></li>
+                </ul>
+            </div>
+            <button type="button" class="btn" onclick="submitExam()">Submit</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function submitExam() {
+            // Define correct answers
+            const correctAnswers = {
+                q1: "Paris",
+                q2: "Mars",
+                q3: "Pacific"
+            };
+
+            let score = 0;
+
+            // Get user responses
+            const form = document.getElementById('examForm');
+            const formData = new FormData(form);
+
+            for (let question in correctAnswers) {
+                if (formData.get(question) === correctAnswers[question]) {
+                    score++;
+                }
+            }
+
+            // Display the result
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = `You scored ${score} out of ${Object.keys(correctAnswers).length}`;
+        }
+    </script>
+</body>
+</html>
